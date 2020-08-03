@@ -39,7 +39,7 @@ class Tugas11 extends React.Component {
 							<tr>
 								<Row x = {el.nama} />
 								<Row x = {el.harga} />
-								<Row x = {el.berat} />
+								<Row x = {el.berat/1000 + ' kg'} />
 							</tr>
 						)
 					})}
