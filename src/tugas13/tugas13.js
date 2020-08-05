@@ -28,17 +28,19 @@ class Tugas11 extends React.Component {
 				nama: "",
 				harga: "",
 				berat: ""
-			}
-		
+			},
+			indexOfForm: -1
 		}
 	
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleEdit = this.handleEdit.bind(this);
+		this.handleDelete = this.handleDelete.bind(this);	
 	  }
 	
 	  handleChange(event){
-		  let input = {...this.state.input}
-		  input[event.target.name] = event.target.value
+		let input = {...this.state.input}
+		input[event.target.name] = event.target.value
 		this.setState({
 			input
 		});
@@ -46,31 +48,83 @@ class Tugas11 extends React.Component {
 	
 	  handleSubmit(event){
 		event.preventDefault()
+
+		let input = this.state.input
+		if(input['nama'].replace(/\s/g, '') !== "" && input['harga'].toString().replace(/\s/g, '') !== "" && input['berat'].toString().replace(/\s/g, '') !== "" ){
+			let newDaftarBuah = this.state.dataHargaBuah
+			let index = this.state.indexOfForm
+			console.log(index)
+			if (index === -1){
+			  newDaftarBuah = [...newDaftarBuah, input]
+			}else{
+			  newDaftarBuah[index] = input
+			}
+			this.setState({
+				dataHargaBuah: newDaftarBuah,
+				input :{
+					nama:"",
+					harga: "",
+					berat: ""
+				},
+				indexOfForm: -1
+			})
+		}
+	  }
+
+	  handleEdit(event){
+		let index = event.target.value
+		let buah = this.state.dataHargaBuah[index]
 		this.setState({
-		  dataHargaBuah: [...this.state.dataHargaBuah, this.state.input],
-		  input :{
-			nama:"",
-		  	harga: "",
-		  	berat: ""
-		  }
+			input :{
+				nama: buah.nama,
+				harga: buah.harga,
+				berat: buah.berat				
+			}, 
+			indexOfForm: index
 		})
 	  }
+	
+	  handleDelete(event){
+		let index = event.target.value
+		let newDaftarBuah = this.state.dataHargaBuah
+		let editedDaftarBuah = newDaftarBuah[this.state.indexOfForm]
+		newDaftarBuah.splice(index, 1)
+	
+		if (editedDaftarBuah !== undefined){
+		  // array findIndex baru ada di ES6
+		  var newIndex = newDaftarBuah.findIndex((el) => el === editedDaftarBuah)
+		  this.setState({dataHargaBuah: newDaftarBuah, indexOfForm: newIndex})
+		  
+		}else{
+		  
+		  this.setState({dataHargaBuah: newDaftarBuah})
+		}
+	  }
+	
 	render() { 
 			return ( 
 				<>
 				<h1>Table Harga Buah</h1>
 				<table>
 					<tr>
+					<Header y={'No'}/>
     				<Header y = {'Nama'} />
     				<Header y = {'Harga'} />
     				<Header y ={'Berat'} />
+					<Header y ={'Aksi'}/>
   				</tr>
-					{this.state.dataHargaBuah.map(el =>{
+					{this.state.dataHargaBuah.map((el,index) =>{
 						return(
-							<tr>
+							<tr key={index}>
+								<Row x= {index+1}/>
 								<Row x = {el.nama} />
 								<Row x = {el.harga} />
 								<Row x = {el.berat/1000 + ' kg'} />
+								<td style={{textAlign:'center'}}>
+									<button onClick={this.handleEdit} value={index}>Edit</button>
+									&nbsp;
+									<button onClick={this.handleDelete} value ={index}>Delete</button>
+								</td>
 							</tr>
 						)
 					})}
