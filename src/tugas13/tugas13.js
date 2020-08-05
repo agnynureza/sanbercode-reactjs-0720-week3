@@ -14,7 +14,7 @@ class Header extends React.Component{
 }
 
 
-class Tugas11 extends React.Component {
+class Tugas13 extends React.Component {
 	constructor(props){
 		super(props)
 		this.state ={
@@ -91,12 +91,9 @@ class Tugas11 extends React.Component {
 		newDaftarBuah.splice(index, 1)
 	
 		if (editedDaftarBuah !== undefined){
-		  // array findIndex baru ada di ES6
 		  var newIndex = newDaftarBuah.findIndex((el) => el === editedDaftarBuah)
 		  this.setState({dataHargaBuah: newDaftarBuah, indexOfForm: newIndex})
-		  
 		}else{
-		  
 		  this.setState({dataHargaBuah: newDaftarBuah})
 		}
 	  }
@@ -146,4 +143,4 @@ class Tugas11 extends React.Component {
   }
 }
  
-export default Tugas11;
+export default Tugas13;
