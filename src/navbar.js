@@ -1,10 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Link} from "react-router-dom";
+import {ThemeContext} from './App'
 
 const Nav = () => {
+  const theme = useContext(ThemeContext)
+
   return (
     <>
-		<nav style = {{backgroundColor:"#563d7c"}} class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+		<nav style = {{backgroundColor: theme}} class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
 			<a class="navbar-brand" href="#">React JS Bootcamp</a>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav mr-auto">
