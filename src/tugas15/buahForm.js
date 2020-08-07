@@ -3,10 +3,13 @@ import {BuahContext} from "./buahContext"
 import axios from "axios"
 
 const BuahForm = () =>{ 
-  const [dataBuah, setDataBuah, input, setInput, idBuah, setIdBuah, status, setStatus] = useContext(BuahContext)
+  const [dataBuah, setDataBuah, idBuah, setIdBuah, input, setInput, status, setStatus] = useContext(BuahContext)
   
   const handleSubmit = (event) =>{ 
     event.preventDefault()
+
+    console.log('masuk')
+    console.log(status)
 
 		if(input['name'].replace(/\s/g, '') !== "" && input['price'].toString().replace(/\s/g, '') !== "" && input['weight'].toString().replace(/\s/g, '') !== "" ){
 			if(status === "create"){
@@ -15,7 +18,7 @@ const BuahForm = () =>{
 						console.log(res.data)
 						setDataBuah([...dataBuah, {name: res.data.name, price: res.data.price, weight: res.data.weight}])
 					})
-			}else if(axios === "edit"){
+			}else if(status === "edit"){
 				axios.put(`http://backendexample.sanbercloud.com/api/fruits/${idBuah}`, input)
 					.then(res => {
 						let buah = dataBuah.find(el => el.id === idBuah)
@@ -50,7 +53,7 @@ const BuahForm = () =>{
     <h1>Form Buah</h1>
 		<div id="form-content">
       <form onSubmit={handleSubmit}>
-        <label> Nama Buah : </label>          
+        <label> Nama Buah : </label>         
         <input type="text" name='name' value={input.name} onChange={handleChange} placeholder="name" /><br/><br/>
         <label>Harga Buah : </label>
         <input type="text" name='price' value ={input.price} onChange={handleChange} placeholder="price" /><br/><br/>

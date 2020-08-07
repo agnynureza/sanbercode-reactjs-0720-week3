@@ -11,7 +11,7 @@ export const BuahProvider = props => {
     weight: "",
   })
   const [status, setStatus] = useState("create")
-
+  
   return (
     <BuahContext.Provider value={[dataBuah, setDataBuah, idBuah, setIdBuah, input, setInput, status, setStatus]}>
       {props.children}
