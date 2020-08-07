@@ -119,7 +119,7 @@ const Tugas14 = () => {
 						<td>
 							<button type="button" class="btn btn-warning" onClick={handleEdit} value={el.id}>Edit</button>
 							&nbsp;
-							<button  type="button" class="btn btn-danger" onClick={handleDelete} value ={el.id}>Delete</button>
+							<button type="button" class="btn btn-danger" onClick={handleDelete} value ={el.id}>Delete</button>
 						</td>
 					</tr>
 				)
