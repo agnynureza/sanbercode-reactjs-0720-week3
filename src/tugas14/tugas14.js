@@ -1,6 +1,5 @@
 import React , {useState, useEffect} from 'react';
 import axios from 'axios';
-import './tugas14.css'
 
 class Row extends React.Component{
 	render(){
@@ -99,15 +98,17 @@ const Tugas14 = () => {
 
 	return ( 
 		<>
-		<h1>Table Harga Buah</h1>
-		<table>
-			<tr>
-			<Header y={'No'}/>
-			<Header y = {'Name'} />
-			<Header y = {'Price'} />
-			<Header y ={'Weight'} />
-			<Header y ={'Action'}/>
-		  </tr>
+		<h1 style={{textAlign:"center", marginTop: '25px', marginBottom: '25px'}}>Table Harga Buah</h1>
+		<table class="table table-striped" style={{width:'75%', marginLeft: 'auto', marginRight: 'auto'}}>
+			<thead class = "thead-dark">
+				<tr>
+					<Header y={'No'}/>
+					<Header y = {'Name'} />
+					<Header y = {'Price'} />
+					<Header y ={'Weight'} />
+					<Header y ={'Action'}/>
+				</tr>
+			</thead>
 			{dataHargaBuah !== null && dataHargaBuah.map((el,index) =>{
 				return(
 					<tr key={index}>
@@ -115,27 +116,32 @@ const Tugas14 = () => {
 						<Row x = {el.name} />
 						<Row x = {el.price} />
 						<Row x = {el.weight/1000 + ' kg'} />
-						<td style={{textAlign:'center'}}>
-							<button onClick={handleEdit} value={el.id}>Edit</button>
+						<td>
+							<button type="button" class="btn btn-warning" onClick={handleEdit} value={el.id}>Edit</button>
 							&nbsp;
-							<button onClick={handleDelete} value ={el.id}>Delete</button>
+							<button  type="button" class="btn btn-danger" onClick={handleDelete} value ={el.id}>Delete</button>
 						</td>
 					</tr>
 				)
 			})}
 		</table>
-		<h1>Form Buah</h1>
-		<div id="form-content">
-		<form onSubmit={handleSubmit}>
-			<label> Nama Buah : </label>          
-			<input type="text" name='name' value={input.name} onChange={handleChange} placeholder="name" /><br/><br/>
-			<label>Harga Buah : </label>
-			<input type="text" name='price' value ={input.price} onChange={handleChange} placeholder="price" /><br/><br/>
-			<label>Berat Buah : </label>
-			<input type="text" name='weight' value={input.weight} onChange={handleChange} placeholder="in gram" /><br/><br/>
-			<button>submit</button>
+		<h1 style={{textAlign:"center", marginTop: '25px', marginBottom: '25px'}}>Form Buah</h1>
+		<form onSubmit={handleSubmit} style={{width:'25%', marginLeft: 'auto', marginRight: 'auto'}}>
+			<div class="form-group">
+				<label> Nama Buah : </label>          
+				<input class="form-control" type="text" name='name' value={input.name} onChange={handleChange} placeholder="name" />
+			</div>
+			<div className="form-group">
+				<label>Harga Buah : </label>
+				<input class="form-control" type="text" name='price' value ={input.price} onChange={handleChange} placeholder="price" />
+			</div>
+			<div className="form-group">
+				<label>Berat Buah : </label>
+				<input class="form-control" type="text" name='weight' value={input.weight} onChange={handleChange} placeholder="in gram" />
+			</div>
+			<br/>
+			<button type="submit" class="btn btn-primary"> submit</button>
 		</form>
-		</div>
 		</>
 	);
 }

@@ -17,8 +17,9 @@ const BuahList = () =>{
 
   return(
     <>
-      <h1>Table Harga Buah</h1>
-      <table>
+      <h1 style={{textAlign:"center", marginTop: '25px', marginBottom: '25px'}}>Table Harga Buah</h1>
+	  	<table class="table table-striped" style={{width:'75%', marginLeft: 'auto', marginRight: 'auto'}}>
+			<thead class = "thead-dark">
         <tr>
           <th> No </th>
           <th> Name </th>
@@ -26,6 +27,7 @@ const BuahList = () =>{
           <th> Weight </th>
           <th> Action </th>
         </tr>
+      </thead>
         {dataBuah !== null && dataBuah.map((el,index) =>{
           return(
             <tr key={index}>

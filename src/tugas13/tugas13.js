@@ -1,5 +1,4 @@
 import React from 'react';
-import './tugas13.css'
 
 class Row extends React.Component{
 	render(){
@@ -9,7 +8,7 @@ class Row extends React.Component{
 
 class Header extends React.Component{
 	render(){
-	return <th>{this.props.y}</th>
+	return <th scope="row">{this.props.y}</th>
 	}
 }
 
@@ -101,15 +100,17 @@ class Tugas13 extends React.Component {
 	render() { 
 			return ( 
 				<>
-				<h1>Table Harga Buah</h1>
-				<table>
-					<tr>
-					<Header y={'No'}/>
-    				<Header y = {'Nama'} />
-    				<Header y = {'Harga'} />
-    				<Header y ={'Berat'} />
-					<Header y ={'Aksi'}/>
-  				</tr>
+				<h1 style={{textAlign:"center", marginTop: '25px', marginBottom: '25px'}}>Table Harga Buah</h1>
+				<table class="table table-striped" style={{width:'75%', marginLeft: 'auto', marginRight: 'auto'}}>
+					<thead class = "thead-dark">
+						<tr>
+						<Header y={'No'}/>
+						<Header y = {'Nama'} />
+						<Header y = {'Harga'} />
+						<Header y ={'Berat'} />
+						<Header y ={'Aksi'}/>
+						</tr>
+					</thead>
 					{this.state.dataHargaBuah.map((el,index) =>{
 						return(
 							<tr key={index}>
@@ -117,27 +118,32 @@ class Tugas13 extends React.Component {
 								<Row x = {el.nama} />
 								<Row x = {el.harga} />
 								<Row x = {el.berat/1000 + ' kg'} />
-								<td style={{textAlign:'center'}}>
-									<button onClick={this.handleEdit} value={index}>Edit</button>
+								<td>
+									<button type="button" class="btn btn-warning" onClick={this.handleEdit} value={index}>Edit</button>
 									&nbsp;
-									<button onClick={this.handleDelete} value ={index}>Delete</button>
+									<button type="button" class="btn btn-danger" onClick={this.handleDelete} value ={index}>Delete</button>
 								</td>
 							</tr>
 						)
 					})}
 				</table>
-				<h1>Form Buah</h1>
-				<div id="form-content">
-				<form onSubmit={this.handleSubmit}>
-					<label> Nama Buah : </label>          
-					<input type="text" name='nama' value={this.state.input.nama} onChange={this.handleChange} placeholder="nama" /><br/><br/>
-					<label>Harga Buah : </label>
-					<input type="text" name='harga' value ={this.state.input.harga} onChange={this.handleChange} placeholder="harga" /><br/><br/>
-					<label>Berat Buah : </label>
-					<input type="text" name='berat' value={this.state.input.berat} onChange={this.handleChange} placeholder="dalam gram" /><br/><br/>
-					<button>submit</button>
+				<h1 style={{textAlign:"center", marginTop: '25px', marginBottom: '25px'}}>Form Buah</h1>
+				<form onSubmit={this.handleSubmit} style={{width:'25%', marginLeft: 'auto', marginRight: 'auto'}}>
+					<div class="form-group">
+						<label> Nama Buah : </label>          
+						<input class="form-control" type="text" name='nama' value={this.state.input.nama} onChange={this.handleChange} placeholder="nama" />
+					</div>
+					<div className="form-group">
+						<label>Harga Buah : </label>
+						<input class="form-control" type="text" name='harga' value ={this.state.input.harga} onChange={this.handleChange} placeholder="harga" />
+					</div>
+					<div className="form-group">
+						<label>Berat Buah : </label>
+						<input class="form-control" type="text" name='berat' value={this.state.input.berat} onChange={this.handleChange} placeholder="dalam gram" />
+					</div>
+					<br/>
+					<button type="submit" class="btn btn-primary"> submit</button>
 				</form>
-				</div>
 				</>
 			);
   }

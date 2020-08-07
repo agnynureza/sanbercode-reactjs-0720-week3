@@ -50,18 +50,23 @@ const BuahForm = () =>{
 
   return(
     <>
-    <h1>Form Buah</h1>
-		<div id="form-content">
-      <form onSubmit={handleSubmit}>
-        <label> Nama Buah : </label>         
-        <input type="text" name='name' value={input.name} onChange={handleChange} placeholder="name" /><br/><br/>
-        <label>Harga Buah : </label>
-        <input type="text" name='price' value ={input.price} onChange={handleChange} placeholder="price" /><br/><br/>
-        <label>Berat Buah : </label>
-        <input type="text" name='weight' value={input.weight} onChange={handleChange} placeholder="in gram" /><br/><br/>
-        <button>submit</button>
-      </form>
-		</div>
+    <h1 style={{textAlign:"center", marginTop: '25px', marginBottom: '25px'}}>Form Buah</h1>
+		<form onSubmit={handleSubmit} style={{width:'25%', marginLeft: 'auto', marginRight: 'auto'}}>
+			<div class="form-group">
+				<label> Nama Buah : </label>          
+				<input class="form-control" type="text" name='name' value={input.name} onChange={handleChange} placeholder="name" />
+			</div>
+			<div className="form-group">
+				<label>Harga Buah : </label>
+				<input class="form-control" type="text" name='price' value ={input.price} onChange={handleChange} placeholder="price" />
+			</div>
+			<div className="form-group">
+				<label>Berat Buah : </label>
+				<input class="form-control" type="text" name='weight' value={input.weight} onChange={handleChange} placeholder="in gram" />
+			</div>
+			<br/>
+			<button type="submit" class="btn btn-primary"> submit</button>
+		</form>
     </>
   )
 }

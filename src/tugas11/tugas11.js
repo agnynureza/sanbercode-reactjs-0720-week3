@@ -1,5 +1,4 @@
 import React from 'react';
-import './tugas11.css'
 
 let dataHargaBuah = [
 	{nama: "Semangka", harga: 10000, berat: 1000},
@@ -27,13 +26,15 @@ class Tugas11 extends React.Component {
 	render() { 
 			return ( 
 				<>
-				<h1>Table Harga Buah</h1>
-				<table>
-					<tr>
-    				<Header y = {'Nama'} />
-    				<Header y = {'Harga'} />
-    				<Header y ={'Berat'} />
-  				</tr>
+				<h1 style={{textAlign:"center", marginTop: '25px', marginBottom: '25px'}}>Table Harga Buah</h1>
+				<table class="table table-striped" style={{width:'75%', marginLeft: 'auto', marginRight: 'auto'}}>
+					<thead class = "thead-dark">
+						<tr>
+						<Header y = {'Nama'} />
+						<Header y = {'Harga'} />
+						<Header y ={'Berat'} />
+						</tr>
+					</thead>
 					{dataHargaBuah.map(el =>{
 						return(
 							<tr>

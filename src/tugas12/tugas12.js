@@ -1,6 +1,5 @@
 import React from 'react';
 import Moment from 'moment'
-import './tugas12.css'
 
 class Tugas12 extends React.Component {
     constructor(props){
@@ -39,16 +38,19 @@ class Tugas12 extends React.Component {
     return(
       <>
       { this.state.time > 0 &&
-        <div>
-          <h2>
+      <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">React StopWatch</h1>
+        <h2>
             Sekarang jam : {this.state.timeNow}
           </h2>
           <h2>
             Hitung Mundur : {this.state.time}
           </h2>
-        </div>
-      }
-      </>
+      </div>
+      </div>
+  }
+    </>
     )
   }
 }

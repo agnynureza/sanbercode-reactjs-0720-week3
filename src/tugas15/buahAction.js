@@ -26,10 +26,10 @@ const BuahAction = (props) => {
 
     return(
         <>
-          <td style={{textAlign:'center'}}>
-            <button onClick={handleEdit} value={props.id}>Edit</button>
+          <td>
+            <button type="button" class="btn btn-warning"  onClick={handleEdit} value={props.id}>Edit</button>
             &nbsp;
-            <button onClick={handleDelete} value ={props.id}>Delete</button>
+            <button type="button" class="btn btn-danger" onClick={handleDelete} value ={props.id}>Delete</button>
           </td>
         </>
     )

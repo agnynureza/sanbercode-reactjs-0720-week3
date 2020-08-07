@@ -1,14 +1,15 @@
 import React from 'react';
+import Nav from './navbar';
+import Routes from './router'
 import './App.css';
-import Tugas12 from './tugas12/tugas12';
-import Tugas15 from './tugas15/buah'
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   return (
-    <div>
-      <Tugas12 start={100}/>
-      <Tugas15 />
-    </div>
+    <Router>
+      <Nav/>
+      <Routes/>
+    </Router>
   );
 }
 
